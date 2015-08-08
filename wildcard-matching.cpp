@@ -20,3 +20,26 @@ public:
         return p_idx == p.size();
     }
 };
+
+
+// class Solution {
+// public:
+//     bool isMatch(string s, string p) {
+//         int m = s.size(), n = p.size();
+//         vector<bool> dp(m + 1, false);
+//         dp[0] = true;
+//         for (int j = 0; j < n; ++j) {
+//             if (p[j] != '*') {
+//                 for (int i = m - 1; i >= 0 ; --i) {
+//                     dp[i + 1] = dp[i] && (p[j] == s[i] || p[j] == '?');
+//                 }
+//             } else {
+//                 int i = 0;
+//                 while (i <= m && !dp[i]) ++i;
+//                 while (i <= m) dp[i++] = true;
+//             }
+//           dp[0] = dp[0] && p[j] == '*';  
+//         }
+//         return dp[m];
+//     }
+// };
