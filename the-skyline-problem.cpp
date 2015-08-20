@@ -1,0 +1,29 @@
+// https://leetcode.com/problems/the-skyline-problem/
+
+class Solution {
+public:
+    vector<pair<int, int>> getSkyline(vector<vector<int>>& buildings) {
+        vector<pair<int, int>> h, res;
+        multiset<int> m;
+        for (auto &a : buildings) {
+            h.push_back({a[0], -a[2]});
+            h.push_back({a[1], a[2]});
+        }
+        sort(h.begin(), h.end());
+        m.insert(0);
+        int curr = 0, pre = 0;
+        for (auto &a : h) {
+            if (a.second < 0) {
+                m.insert(-a.second);
+            } else {
+                m.erase(m.find(a.second));
+            }
+            curr = *m.rbegin();
+            if (pre != curr) {
+                res.push_back({a.first, curr});
+                pre = curr;
+            }
+        }
+        return res;
+    }
+};
