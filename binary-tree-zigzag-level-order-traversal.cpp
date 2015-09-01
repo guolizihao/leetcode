@@ -18,7 +18,6 @@ public:
         s1.push(root);
         vector<int> a;
         while (!s1.empty() || !s2.empty()) {
-            // vector<int> a;
             while (!s1.empty()) {
                 TreeNode *node = s1.top(); s1.pop();
                 a.push_back(node->val);
